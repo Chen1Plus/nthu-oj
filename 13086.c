@@ -19,8 +19,7 @@ int main() {
     f_str *arr = malloc(sizeof(f_str) * MAX_N);
     arr[0].str = malloc(sizeof(char) * MAX_STR);
     arr[1].str = malloc(sizeof(char) * MAX_STR);
-    arr[0].a = NULL;
-    arr[1].a = NULL;
+    arr[0].a = arr[1].a = NULL;
 
     int t;
     scanf("%d", &t);
