@@ -4,7 +4,6 @@
 
 #define MAXN 10005
 
-
 typedef struct {
     char name[35];
     // order meaningful
@@ -40,30 +39,14 @@ int main() {
         for (int i = 0; i < n; i++) {
             scanf("%s %s %d", cats[i].name, tmp, &cats[i].age);
             switch (tmp[0]) {
-                case 'e':
-                    cats[i].job = ELDER;
-                    break;
-                case 'n':
-                    cats[i].job = NURSY;
-                    break;
-                case 'k':
-                    cats[i].job = KITTY;
-                    break;
-                case 'w':
-                    cats[i].job = WARRIOR;
-                    break;
-                case 'a':
-                    cats[i].job = APPRENTICE;
-                    break;
-                case 'm':
-                    cats[i].job = MEDICENT;
-                    break;
-                case 'd':
-                    cats[i].job = DEPUTY;
-                    break;
-                case 'l':
-                    cats[i].job = LEADER;
-                    break;
+                case 'e': cats[i].job = ELDER; break;
+                case 'n': cats[i].job = NURSY; break;
+                case 'k': cats[i].job = KITTY; break;
+                case 'w': cats[i].job = WARRIOR; break;
+                case 'a': cats[i].job = APPRENTICE; break;
+                case 'm': cats[i].job = MEDICENT; break;
+                case 'd': cats[i].job = DEPUTY; break;
+                case 'l': cats[i].job = LEADER; break;
             }
         }
         // sort

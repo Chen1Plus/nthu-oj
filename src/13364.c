@@ -14,7 +14,7 @@ int main() {
     int t;
     scanf("%d", &t);
     while (t--) {
-        int used_cnt = 0;
+        int used_cnt   = 0;
         int folder_cnt = 0;
         for (int i = 0; i < MAX_FOLDER_CNT; i++) used_folder[i] = false;
         scanf("%s %s", o_path, d_path);
@@ -22,7 +22,7 @@ int main() {
         char *token = strtok(d_path, "/");
         while (token != NULL) {
             folder[folder_cnt++] = token;
-            token = strtok(NULL, "/");
+            token                = strtok(NULL, "/");
         }
 
         token = strtok(o_path, "/");
@@ -31,7 +31,7 @@ int main() {
             for (int i = 0; i < folder_cnt; i++)
                 if (!used_folder[i] && strcmp(token, folder[i]) == 0) {
                     used_folder[i] = true;
-                    idx = i;
+                    idx            = i;
                     break;
                 }
 

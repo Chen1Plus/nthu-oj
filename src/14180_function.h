@@ -6,9 +6,9 @@ typedef struct node {
 } Node;
 
 void insert(Node** pos, Node** back, int idx) {
-    Node* new = malloc(sizeof(Node));
-    new->idx = idx;
-    new->next = (*pos)->next;
+    Node* new    = malloc(sizeof(Node));
+    new->idx     = idx;
+    new->next    = (*pos)->next;
     (*pos)->next = new;
     if (*back == *pos) *back = new;
 }

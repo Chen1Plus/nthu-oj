@@ -21,7 +21,7 @@ bool check(int rows, int cols, int colors[][50], int mode) {
 
             if (!counting && is_o) {
                 counting = true;
-                cnt = 1;
+                cnt      = 1;
             } else if (counting) {
                 if (is_o)
                     cnt++;
@@ -32,8 +32,7 @@ bool check(int rows, int cols, int colors[][50], int mode) {
             }
         }
 
-        if (counting)
-            if (cnt != colors[i][++valid_num]) return false;
+        if (counting && cnt != colors[i][++valid_num]) return false;
         if (valid_num != colors[i][0]) return false;
     }
     return true;

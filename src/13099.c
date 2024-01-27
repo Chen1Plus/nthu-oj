@@ -25,7 +25,6 @@ int qsort_cmp(const void* lhs, const void* rhs) {
     return 0;
 }
 
-
 int main() {
     int T;
     scanf("%d", &T);

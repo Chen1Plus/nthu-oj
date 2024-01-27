@@ -5,7 +5,6 @@
 #define MAX_STR 2010
 #define MAX_N 60
 
-
 typedef struct _f_str {
     unsigned long long len;
     struct _f_str *a;
@@ -31,8 +30,8 @@ int main() {
 
         for (int i = 2; i <= n; i++) {
             arr[i].len = arr[i - 1].len + arr[i - 2].len;
-            arr[i].a = &arr[i - 2];
-            arr[i].b = &arr[i - 1];
+            arr[i].a   = &arr[i - 2];
+            arr[i].b   = &arr[i - 1];
         }
 
         f_str *cur = &arr[n];

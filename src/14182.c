@@ -12,15 +12,15 @@ int main() {
     int k;
     Digit *p;
     Digit *head = malloc(sizeof(Digit));
-    head->n = 0;
+    head->n     = 0;
 
     p = head;
     char c;
     while (scanf("%c", &c) != EOF) {
         if (c == '\n') break;
-        p->next = malloc(sizeof(Digit));
+        p->next    = malloc(sizeof(Digit));
         p->next->n = c;
-        p = p->next;
+        p          = p->next;
     }
     p->next = NULL;
     scanf("%d", &k);
@@ -33,7 +33,7 @@ int main() {
         while (p->next->next != NULL) {
             if (p->next->n > p->next->next->n) {
                 Digit *tmp = p->next;
-                p->next = p->next->next;
+                p->next    = p->next->next;
                 free(tmp);
                 break;
             }

@@ -21,14 +21,14 @@ void AddFront(Node** head, Node** back, int num) {
 }
 
 void AddBack(Node** head, Node** back, int num) {
-    Node* tmp = CreateNode(num);
+    Node* tmp     = CreateNode(num);
     (*back)->next = tmp;
-    *back = tmp;
+    *back         = tmp;
 }
 
 void DeleteFront(Node** head, Node** back) {
     if ((*head)->next == NULL) return;
-    Node* tmp = (*head)->next;
+    Node* tmp     = (*head)->next;
     (*head)->next = tmp->next;
     free(tmp);
 }
@@ -51,13 +51,13 @@ void Swap(Node** head, Node** back) {
     if (!(*head)->next || !(*head)->next->next) return;
     Node *prev = (*head)->next, *curr = (*head)->next->next, *next;
     prev->next = NULL;
-    *back = prev;
+    *back      = prev;
     while (curr->next) {
-        next = curr->next;
+        next       = curr->next;
         curr->next = prev;
-        prev = curr;
-        curr = next;
+        prev       = curr;
+        curr       = next;
     }
-    curr->next = prev;
+    curr->next    = prev;
     (*head)->next = curr;
 }

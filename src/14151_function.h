@@ -16,13 +16,13 @@ typedef struct {
 Table *createTable() {
     Table *table = malloc(sizeof(Table));
     scanf("%d", &table->tableSize);
-    table->guest = NULL;
+    table->guest     = NULL;
     table->leaveTime = 0;
     return table;
 }
 
 Guest *createGuest() {
-    Guest *guest = malloc(sizeof(Guest));
+    Guest *guest     = malloc(sizeof(Guest));
     guest->guestName = malloc(sizeof(char) * 15);
     scanf("%s %d %d %d", guest->guestName, &guest->groupSize,
           &guest->arriveTime, &guest->diningTime);
@@ -32,8 +32,8 @@ Guest *createGuest() {
 Guest *checkLeave(Table **table, int tableCount, int currentTime) {
     for (int i = 0; i < tableCount; i++)
         if (table[i]->leaveTime == currentTime) {
-            Guest *leave = table[i]->guest;
-            table[i]->guest = NULL;
+            Guest *leave        = table[i]->guest;
+            table[i]->guest     = NULL;
             table[i]->leaveTime = 0;
             return leave;
         }
@@ -44,7 +44,7 @@ int assignTable(Table **table, int tableCount, int currentTime, Guest *guest) {
     for (int i = 0; i < tableCount; i++)
         if (table[i]->guest == NULL &&
             table[i]->tableSize >= guest->groupSize) {
-            table[i]->guest = guest;
+            table[i]->guest     = guest;
             table[i]->leaveTime = currentTime + guest->diningTime;
             return 1;
         }

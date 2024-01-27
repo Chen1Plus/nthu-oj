@@ -12,7 +12,7 @@ int main() {
     // initialize the dummy head
 
     // we'll append the element after this dummy head to avoid runtime error.
-    head->idx = -1;
+    head->idx  = -1;
     head->next = NULL;
 
     while (scanf("%s", str) != EOF) {
@@ -44,7 +44,7 @@ int main() {
             printf("%d%c", print->idx, (print->next == NULL ? '\n' : ' '));
 
         Node* del = print;
-        print = print->next;
+        print     = print->next;
         free(del);
     }
 }

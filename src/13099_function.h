@@ -2,7 +2,6 @@
 
 #define MAX_NAME 100
 
-
 typedef struct _Item {
     char* name;
     int price;
@@ -19,9 +18,9 @@ void AddItem(Item* L, int idx, char* name, int price, int discount,
              int quality) {
     L[idx].name = malloc(sizeof(char) * (MAX_NAME + 1));
     strncpy(L[idx].name, name, MAX_NAME + 1);
-    L[idx].price = price;
+    L[idx].price    = price;
     L[idx].discount = discount;
-    L[idx].quality = quality;
+    L[idx].quality  = quality;
 }
 
 void DeleteList(Item* L, int N) {

@@ -3,7 +3,6 @@
 
 #include "12568_function.h"
 
-
 void Print_List(Node* head);
 void Delete_List(Node* head);
 
@@ -16,15 +15,9 @@ int main() {
             scanf("%d", &x);
             Push(&head, x);
         }
-        if (strcmp(op, "pop") == 0) {
-            Pop(&head);
-        }
-        if (strcmp(op, "reverse") == 0) {
-            Reverse_List(&head);
-        }
-        if (strcmp(op, "print") == 0) {
-            Print_List(head);
-        }
+        if (strcmp(op, "pop") == 0) { Pop(&head); }
+        if (strcmp(op, "reverse") == 0) { Reverse_List(&head); }
+        if (strcmp(op, "print") == 0) { Print_List(head); }
     }
 
     Delete_List(head);
