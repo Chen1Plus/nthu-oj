@@ -1,3 +1,1 @@
-歡迎 issue 或 pull request !!!  
-  
-clang tidy 的配置不怎樣樣，請各位不吝指教☺️
+The solutions have passed the online judge, but they may be bad implements with bugs.
