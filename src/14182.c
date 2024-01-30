@@ -9,43 +9,43 @@ typedef struct digit {
 } Digit;
 
 int main() {
-    int k;
-    Digit *p;
     Digit *head = malloc(sizeof(Digit));
-    head->n     = 0;
+    Digit *cur  = head;
 
-    p = head;
     char c;
     while (scanf("%c", &c) != EOF) {
         if (c == '\n') break;
-        p->next    = malloc(sizeof(Digit));
-        p->next->n = c;
-        p          = p->next;
+        cur->next = malloc(sizeof(Digit));
+        cur       = cur->next;
+        cur->n    = c;
     }
-    p->next = NULL;
+    cur->next = NULL;
+
+    int k;
     scanf("%d", &k);
-
     while (k--) {
-        p = head;
-        while (p->next->n == '0' && p->next->next != NULL)
-            p->next = p->next->next;
+        cur = head;
+        while (cur->next->n == '0' && cur->next->next != NULL) {
+            Digit *tmp = cur->next;
+            cur->next  = cur->next->next;
+            free(tmp);
+        }
 
-        while (p->next->next != NULL) {
-            if (p->next->n > p->next->next->n) {
-                Digit *tmp = p->next;
-                p->next    = p->next->next;
+        while (cur->next->next != NULL) {
+            if (cur->next->n > cur->next->next->n) {
+                Digit *tmp = cur->next;
+                cur->next  = cur->next->next;
                 free(tmp);
                 break;
             }
-            p = p->next;
+            cur = cur->next;
         }
     }
 
-    p = head->next;
-    while (p != NULL) {
-        printf("%c", p->n);
-        p = p->next;
+    cur = head->next;
+    while (cur != NULL) {
+        printf("%c", cur->n);
+        cur = cur->next;
     }
     printf("\n");
-    return 0;
 }
