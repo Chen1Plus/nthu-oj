@@ -29,7 +29,7 @@ Node* createList() {
     Node* head = (Node*)malloc(sizeof(Node));
     head->next = NULL;
 
-    scanf("%d", &(head->data));
+    scanf("%d", &head->data);
 
     int data;
     Node* temp = head;

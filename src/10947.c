@@ -5,31 +5,25 @@
 
 void printList(Node *head) {
     Node *temp;
-    for (temp = head; temp != NULL; temp = temp->next) {
+    for (temp = head; temp != NULL; temp = temp->next)
         printf("%d ", temp->data);
-    }
 }
 
 void freeList(Node *head) {
-    Node *temp;
-    for (temp = head; temp != NULL; temp = head) {
+    for (Node *temp = head; temp != NULL; temp = head) {
         head = head->next;
         free(temp);
     }
 }
 
 int main() {
-    Node *head;
+    Node *head = createList();
+
     int data;
-
-    head = createList();
-
     while (1) {
         scanf("%d", &data);
-        if (data > -1) {
-            deleteNode(&head, data);
-        } else
-            break;
+        if (data <= -1) break;
+        deleteNode(&head, data);
     }
 
     printList(head);
