@@ -8,19 +8,15 @@ int main() {
     char* s = malloc(sizeof(char) * (n + 1));
     scanf("%s", s);
 
-    int ans = 0;
     int min = INT_MAX;
-
     int last, cur;
     scanf("%d", &last);
     for (int i = 1; i < n; i++) {
         scanf("%d", &cur);
-        if (s[i] == 'L' && s[i - 1] == 'R' && cur - last < min) {
-            ans = 1;
+        if (s[i] == 'L' && s[i - 1] == 'R' && cur - last < min)
             min = cur - last;
-        }
         last = cur;
     }
 
-    printf("%d\n", ans ? min / 2 : -1);
+    printf("%d\n", min != INT_MAX ? min / 2 : -1);
 }
