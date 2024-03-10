@@ -20,19 +20,24 @@ int main() {
     arr[1]->prev = NULL;
     free(arr[0]);
 
+    int t, a, b;
     while (k--) {
-        int t, a, b;
         scanf("%d %d %d", &t, &a, &b);
+        t--;
 
-        if (!(arr[a] && (t == 1 ? arr[a]->next : arr[a]->prev))) {
+        if (!(arr[a] && (t ? arr[a]->prev : arr[a]->next))) {
             printf("Penguin07 QQ\n");
             continue;
         };
 
         Node *head, *last;
-        head = last = t == 1 ? arr[a]->next : arr[a]->prev;
-        for (int i = 1; i < b && (t == 1 ? last->next : head->prev); i++)
-            t == 1 ? (last = last->next) : (head = head->prev);
+        if (t) {
+            head = last = arr[a]->prev;
+            while (--b && head->prev) head = head->prev;
+        } else {
+            head = last = arr[a]->next;
+            while (--b && last->next) last = last->next;
+        }
 
         if (head->prev) head->prev->next = last->next;
         if (last->next) last->next->prev = head->prev;
@@ -50,8 +55,7 @@ int main() {
         free(head);
     }
 
-    n++;
-    while (n--)
+    for (; n; n--)
         if (arr[n]) free(arr[n]);
     free(arr);
     return 0;
