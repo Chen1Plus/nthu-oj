@@ -22,4 +22,8 @@ int main() {
 
     for (int i = 0; i < n; i++) printf("%c", from[str[i] - 'a']);
     printf("\n");
+
+    free(str);
+    free(a);
+    free(b);
 }
