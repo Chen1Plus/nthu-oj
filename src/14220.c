@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct _Node {
+typedef struct Node {
     int idx;
-    struct _Node *prev;
-    struct _Node *next;
+    struct Node *prev;
+    struct Node *next;
 } Node;
 
 int main() {
