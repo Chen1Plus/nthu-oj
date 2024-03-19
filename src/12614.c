@@ -2,21 +2,17 @@
 
 int main() {
     int game[1010];
-    int n, m;
+    int n, m, bill, ans, i;
+
     scanf("%d %d", &n, &m);
-    for (int i = 0; i < n; i++) scanf("%d", &game[i]);
-
-    int bill;
+    for (i = 0; i < n; i++) scanf("%d", &game[i]);
     scanf("%d", &bill);
-    m--;
 
-    int ans = 0;
-    for (int i = 0; i < n; i++)
+    for (i = ans = 0; i < n; i++)
         if (bill >= game[i]) {
-            ans++;
-            if (m == 0) break;
+            ans++, m--;
+            if (!m) break;
             scanf("%d", &bill);
-            m--;
         }
 
     printf("%d\n", ans);

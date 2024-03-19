@@ -1,8 +1,7 @@
-#include <stdbool.h>
 #include <stdio.h>
 
 int n, m;
-bool board[16];
+int board[16];
 
 void flip(int x) {
     board[x] = !board[x];
@@ -15,8 +14,7 @@ void flip(int x) {
 // return -1 if impossible, otherwise return the number of flips
 int recur(int x, int cnt) {
     if (x == n * m) {
-        bool ans = board[0];
-        for (int i = 1; i < n * m; i++)
+        for (int i = 1, ans = board[0]; i < n * m; i++)
             if (board[i] != ans) return -1;
         return cnt;
     }
@@ -30,7 +28,7 @@ int recur(int x, int cnt) {
 }
 
 int main() {
-    int t;
+    int t, ans;
     scanf("%d", &t);
     while (t--) {
         scanf("%d %d", &n, &m);
@@ -38,8 +36,7 @@ int main() {
             getchar();
             board[i] = getchar() == 'w';
         }
-        int ans = recur(0, 0);
+        ans = recur(0, 0);
         printf((ans == -1 ? "oops\n" : "%d\n"), ans);
     }
-    return 0;
 }

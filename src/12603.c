@@ -3,19 +3,16 @@
 #include <stdlib.h>
 
 int main() {
-    int n;
+    int n, last, cur, min = INT_MAX;
+
     scanf("%d", &n);
     char* s = malloc(sizeof(char) * (n + 1));
-    scanf("%s", s);
+    scanf("%s %d", s, &last);
 
-    int min = INT_MAX;
-    int last, cur;
-    scanf("%d", &last);
-    for (int i = 1; i < n; i++) {
+    for (int i = 1; i < n; last = cur, i++) {
         scanf("%d", &cur);
         if (s[i] == 'L' && s[i - 1] == 'R' && cur - last < min)
             min = cur - last;
-        last = cur;
     }
 
     printf("%d\n", min != INT_MAX ? min / 2 : -1);

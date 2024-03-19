@@ -1,12 +1,11 @@
 #include <stdio.h>
-#include <string.h>
 
 #define is_paren_l(pos) (str[(pos)] == '(')
 #define is_paren_r(pos) (str[(pos)] == ')')
 
 #define print_c printf("%c", str[pos++])
 
-int len, pos;
+int pos;
 char str[256];
 
 int not_single(int cur) {
@@ -42,6 +41,5 @@ void expr() {
 
 int main() {
     scanf("%s", &str);
-    len = (int)strlen(str);
     expr();
 }

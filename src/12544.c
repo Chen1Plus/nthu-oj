@@ -4,18 +4,16 @@
 int main() {
     int link_num = 0;
     char input[1001];
-    enum { NONE, HEAD, BODY } possition = NONE;
+    enum { NONE, HEAD, BODY } position = NONE;
 
-    while (fgets(input, 1000, stdin) != NULL) {
-        if (strstr(input, "<head>") != NULL)
-            possition = HEAD;
-        else if (strstr(input, "<body>") != NULL)
-            possition = BODY;
-        else if (strstr(input, "</head>") != NULL ||
-                 strstr(input, "</body>") != NULL)
-            possition = NONE;
+    while (fgets(input, 1000, stdin)) {
+        position = strstr(input, "<head>")   ? HEAD
+                   : strstr(input, "<body>") ? BODY
+                   : (strstr(input, "</head>") || strstr(input, "</body>"))
+                       ? NONE
+                       : position;
 
-        if (possition == HEAD) {
+        if (position == HEAD) {
             char *title = strstr(input, "<title>");
             if (title != NULL) {
                 title += 7;
@@ -27,15 +25,10 @@ int main() {
 
                 printf("%s\n", title);
             }
-        } else if (possition == BODY) {
-            int cursor = 0;
-            while (input[cursor] != '\0') {
+        } else if (position == BODY)
+            for (int cursor = 0; input[cursor]; cursor++)
                 if (strncmp(input + cursor, "</a>", 4) == 0) link_num++;
-                cursor++;
-            }
-        }
     }
 
     printf("%d\n", link_num);
-    return 0;
 }
