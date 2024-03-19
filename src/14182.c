@@ -11,10 +11,10 @@ typedef struct digit {
 int main() {
     Digit *head = malloc(sizeof(Digit));
     Digit *cur  = head;
+    Digit *tmp;
 
     char c;
-    while (scanf("%c", &c) != EOF) {
-        if (c == '\n') break;
+    while (scanf("%c", &c) != EOF && c != '\n') {
         cur->next = malloc(sizeof(Digit));
         cur       = cur->next;
         cur->n    = c;
@@ -24,28 +24,20 @@ int main() {
     int k;
     scanf("%d", &k);
     while (k--) {
-        cur = head;
-        while (cur->next->n == '0' && cur->next->next != NULL) {
-            Digit *tmp = cur->next;
-            cur->next  = cur->next->next;
-            free(tmp);
+        for (cur = head; cur->next->n == '0' && cur->next->next; free(tmp)) {
+            tmp       = cur->next;
+            cur->next = cur->next->next;
         }
 
-        while (cur->next->next != NULL) {
+        for (; cur->next->next; cur = cur->next)
             if (cur->next->n > cur->next->next->n) {
-                Digit *tmp = cur->next;
-                cur->next  = cur->next->next;
-                free(tmp);
+                tmp       = cur->next;
+                cur->next = cur->next->next;
                 break;
             }
-            cur = cur->next;
-        }
+        free(tmp);
     }
 
-    cur = head->next;
-    while (cur != NULL) {
-        printf("%c", cur->n);
-        cur = cur->next;
-    }
+    for (cur = head->next; cur; cur = cur->next) printf("%c", cur->n);
     printf("\n");
 }
